@@ -10,7 +10,7 @@ export class CourseRefactoring1654214106657 implements MigrationInterface {
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(
-            `ALTER TABLE "post" RENAME COLUMN "course" TO "name"`,
+            `ALTER TABLE "courses" RENAME COLUMN "course" TO "name"`,
         ) // reverts things made in "up" method
     }
 
