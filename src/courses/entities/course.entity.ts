@@ -14,17 +14,17 @@ export class Course {
     @Column()
     description: string;
 
-    @JoinTable()
-    @ManyToMany(type => Tag, (tag: Tag) => tag.courses, {
+    @JoinTable({ name: 'courses_tags' })
+    @ManyToMany(() => Tag, (tag) => tag.courses, {
         cascade: true,
     })
     tags: Tag[];
 
-    @CreateDateColumn({ type: 'timestamp'})
+    @CreateDateColumn({ type: 'timestamp' })
     created_at: Date;
 
     @BeforeInsert()
-    generated() {
+    generatedId() {
         if (this.id) {
             return;
         }

@@ -14,11 +14,11 @@ export class Tag {
     @ManyToMany(() => Course, (course) => course.tags)
     courses: Course[];
 
-    @CreateDateColumn({type: 'timestamp'})
+    @CreateDateColumn({ type: 'timestamp' })
     created_at: Date;
 
     @BeforeInsert()
-    generated() {
+    generatedId() {
         if (this.id) {
             return;
         }
